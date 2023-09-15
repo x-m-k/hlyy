@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.generate.mapper.DrugMapper">
+  <resultMap id="BaseResultMap" type="com.example.generate.com.example.model.Drug">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="specs" jdbcType="VARCHAR" property="specs" />
+    <result column="dn_vaule" jdbcType="VARCHAR" property="dnVaule" />
+    <result column="dosage" jdbcType="VARCHAR" property="dosage" />
+    <result column="dosage_form" jdbcType="VARCHAR" property="dosageForm" />
+    <result column="sccj" jdbcType="VARCHAR" property="sccj" />
+    <result column="packaged" jdbcType="VARCHAR" property="packaged" />
+    <result column="bwm" jdbcType="VARCHAR" property="bwm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, specs, dn_vaule, dosage, dosage_form, sccj, packaged, bwm
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from drug
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from drug
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.generate.com.example.model.Drug" useGeneratedKeys="true">
+    insert into drug (name, specs, dn_vaule, 
+      dosage, dosage_form, sccj, 
+      packaged, bwm)
+    values (#{name,jdbcType=VARCHAR}, #{specs,jdbcType=VARCHAR}, #{dnVaule,jdbcType=VARCHAR}, 
+      #{dosage,jdbcType=VARCHAR}, #{dosageForm,jdbcType=VARCHAR}, #{sccj,jdbcType=VARCHAR}, 
+      #{packaged,jdbcType=VARCHAR}, #{bwm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.generate.com.example.model.Drug" useGeneratedKeys="true">
+    insert into drug
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="specs != null">
+        specs,
+      </if>
+      <if test="dnVaule != null">
+        dn_vaule,
+      </if>
+      <if test="dosage != null">
+        dosage,
+      </if>
+      <if test="dosageForm != null">
+        dosage_form,
+      </if>
+      <if test="sccj != null">
+        sccj,
+      </if>
+      <if test="packaged != null">
+        packaged,
+      </if>
+      <if test="bwm != null">
+        bwm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="specs != null">
+        #{specs,jdbcType=VARCHAR},
+      </if>
+      <if test="dnVaule != null">
+        #{dnVaule,jdbcType=VARCHAR},
+      </if>
+      <if test="dosage != null">
+        #{dosage,jdbcType=VARCHAR},
+      </if>
+      <if test="dosageForm != null">
+        #{dosageForm,jdbcType=VARCHAR},
+      </if>
+      <if test="sccj != null">
+        #{sccj,jdbcType=VARCHAR},
+      </if>
+      <if test="packaged != null">
+        #{packaged,jdbcType=VARCHAR},
+      </if>
+      <if test="bwm != null">
+        #{bwm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.generate.com.example.model.Drug">
+    update drug
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="specs != null">
+        specs = #{specs,jdbcType=VARCHAR},
+      </if>
+      <if test="dnVaule != null">
+        dn_vaule = #{dnVaule,jdbcType=VARCHAR},
+      </if>
+      <if test="dosage != null">
+        dosage = #{dosage,jdbcType=VARCHAR},
+      </if>
+      <if test="dosageForm != null">
+        dosage_form = #{dosageForm,jdbcType=VARCHAR},
+      </if>
+      <if test="sccj != null">
+        sccj = #{sccj,jdbcType=VARCHAR},
+      </if>
+      <if test="packaged != null">
+        packaged = #{packaged,jdbcType=VARCHAR},
+      </if>
+      <if test="bwm != null">
+        bwm = #{bwm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.generate.com.example.model.Drug">
+    update drug
+    set name = #{name,jdbcType=VARCHAR},
+      specs = #{specs,jdbcType=VARCHAR},
+      dn_vaule = #{dnVaule,jdbcType=VARCHAR},
+      dosage = #{dosage,jdbcType=VARCHAR},
+      dosage_form = #{dosageForm,jdbcType=VARCHAR},
+      sccj = #{sccj,jdbcType=VARCHAR},
+      packaged = #{packaged,jdbcType=VARCHAR},
+      bwm = #{bwm,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
